@@ -16,19 +16,21 @@
         #output {
             margin-top: 20px;
             font-weight: bold;
+            cursor: pointer; /* Change cursor to indicate clickable */
         }
     </style>
 </head>
 <body>
     <h1>ReSlash: Replace Slashes</h1>
-<p>Because I always forget the sed syntax</p>
+    <p>Because I always forget the sed syntax</p>
     <input type="text" id="inputString" placeholder="Type your string here">
     <button onclick="replaceSlashes()">Replace / with \</button>
     <button onclick="replaceBackslashes()">Replace \ with /</button>
     <button onclick="duplicateSlashes()">Duplicate / and \</button>
     <button onclick="deduplicateSlashes()">Deduplicate / and \</button>
+    <button onclick="copyToClipboard()">Copy Output to Clipboard</button>
 
-    <div id="output"></div>
+    <div id="output" onclick="selectOutput()"></div>
 
     <script>
         function replaceSlashes() {
@@ -53,6 +55,25 @@
             const input = document.getElementById('inputString').value;
             const output = input.replace(/\\\\/g, '\\').replace(/\/\//g, '/');
             document.getElementById('output').innerText = 'Output: ' + output;
+        }
+
+        function selectOutput() {
+            const outputElement = document.getElementById('output');
+            const range = document.createRange();
+            range.selectNodeContents(outputElement);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+
+        function copyToClipboard() {
+            const outputElement = document.getElementById('output');
+            const textToCopy = outputElement.innerText.replace('Output: ', '');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Output copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         }
     </script>
 </body>
