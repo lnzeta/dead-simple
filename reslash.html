@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reslash: Replace slashes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>ReSlash: Replace Slashes</h1>
+<p>Because I always forget the sed syntax</p>
+    <input type="text" id="inputString" placeholder="Type your string here">
+    <button onclick="replaceSlashes()">Replace / with \</button>
+    <button onclick="replaceBackslashes()">Replace \ with /</button>
+    <button onclick="duplicateSlashes()">Duplicate / and \</button>
+    <button onclick="deduplicateSlashes()">Deduplicate / and \</button>
+
+    <div id="output"></div>
+
+    <script>
+        function replaceSlashes() {
+            const input = document.getElementById('inputString').value;
+            const output = input.replace(/\//g, '\\');
+            document.getElementById('output').innerText = 'Output: ' + output;
+        }
+
+        function replaceBackslashes() {
+            const input = document.getElementById('inputString').value;
+            const output = input.replace(/\\/g, '/');
+            document.getElementById('output').innerText = 'Output: ' + output;
+        }
+
+        function duplicateSlashes() {
+            const input = document.getElementById('inputString').value;
+            const output = input.replace(/\\/g, '\\\\').replace(/\//g, '//');
+            document.getElementById('output').innerText = 'Output: ' + output;
+        }
+
+        function deduplicateSlashes() {
+            const input = document.getElementById('inputString').value;
+            const output = input.replace(/\\\\/g, '\\').replace(/\/\//g, '/');
+            document.getElementById('output').innerText = 'Output: ' + output;
+        }
+    </script>
+</body>
+</html>
