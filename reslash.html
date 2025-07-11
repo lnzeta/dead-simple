@@ -36,25 +36,25 @@
         function replaceSlashes() {
             const input = document.getElementById('inputString').value;
             const output = input.replace(/\//g, '\\');
-            document.getElementById('output').innerText = 'Output: ' + output;
+            document.getElementById('output').innerText = output;
         }
 
         function replaceBackslashes() {
             const input = document.getElementById('inputString').value;
             const output = input.replace(/\\/g, '/');
-            document.getElementById('output').innerText = 'Output: ' + output;
+            document.getElementById('output').innerText = output;
         }
 
         function duplicateSlashes() {
             const input = document.getElementById('inputString').value;
             const output = input.replace(/\\/g, '\\\\').replace(/\//g, '//');
-            document.getElementById('output').innerText = 'Output: ' + output;
+            document.getElementById('output').innerText = output;
         }
 
         function deduplicateSlashes() {
             const input = document.getElementById('inputString').value;
             const output = input.replace(/\\\\/g, '\\').replace(/\/\//g, '/');
-            document.getElementById('output').innerText = 'Output: ' + output;
+            document.getElementById('output').innerText = output;
         }
 
         function selectOutput() {
