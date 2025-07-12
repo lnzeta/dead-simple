@@ -1,1 +1,1 @@
-https://raw.githack.com/lnzeta/dead-simple/main/reslash.html
+https://rawcdn.githack.com/lnzeta/dead-simple/main/reslash.html
